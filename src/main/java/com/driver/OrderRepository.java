@@ -89,13 +89,11 @@ public class OrderRepository {
 
     public String getLastDeliveryTimeByPartnerId(String partnerId) {
         String time;
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         for (String k : orderPartnerHashMap.get(partnerId)) {
             max = Math.max(orderHashMap.get(k).getDeliveryTime(), max);
         }
-        time = "" + max/60;
-        max = max - (max/60);
-        time += ":" + max;
+        time = max/60 + ":" + max%60;
 
         return time;
     }
