@@ -95,13 +95,13 @@ public class OrderRepository {
         }
         time = "" + max/60;
         max = max - (max/60);
-        time += "" + max;
+        time += ":" + max;
 
         return time;
     }
 
     public void deletePartnerById(String partnerId) {
-        for (String s : orderPartnerHashMap.keySet()) {
+        for (String s : orderPartnerHashMap.get(partnerId)) {
             stringBooleanHashMap.replace(s, false);
         }
         deliveryPartnerHashMap.remove(partnerId);
