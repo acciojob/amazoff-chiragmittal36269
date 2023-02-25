@@ -93,8 +93,18 @@ public class OrderRepository {
         for (String k : orderPartnerHashMap.get(partnerId)) {
             max = Math.max(orderHashMap.get(k).getDeliveryTime(), max);
         }
-        time = max/60 + ":" + max%60;
-
+        if (max / 60 < 10) {
+            time = "0" + max / 60;
+        } else {
+            time = "" + max / 60;
+        }
+        if(max%60 < 10)
+        {
+            time += ":0" + max%60;
+        }
+        else {
+            time += ":" + max%60;
+        }
         return time;
     }
 
